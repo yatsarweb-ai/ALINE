@@ -2,9 +2,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import {ArrowRight,Instagram} from 'lucide-react';
-import {useEffect,useRef,useState} from 'react';
-import gsap from 'gsap';
-import {ScrollTrigger} from 'gsap/ScrollTrigger';
+import {useRef,useState} from 'react';
+import {useHomeScroll} from '@/components/useHomeScroll';
+
 import {SiteHeader} from '@/components/SiteHeader';
 import {ProductCard} from '@/components/ProductCard';
 import {QuoteForm} from '@/components/QuoteForm';
@@ -17,7 +17,7 @@ const mosaic=['/images/citrus-brigadeiros.jpg','/images/gift-four.jpg','/images/
 export default function Home(){
  const hero=useRef<HTMLElement>(null);
  const [email,setEmail]=useState('');
- useEffect(()=>{if(!hero.current||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;gsap.registerPlugin(ScrollTrigger);gsap.fromTo(hero.current.querySelectorAll('.hero-enter'),{opacity:0,y:14},{opacity:1,y:0,duration:.65,stagger:.1,ease:'power2.out'});const animations=gsap.utils.toArray<HTMLElement>('.home-section h2,.featured-grid .product-card,.idea-card').map(el=>gsap.fromTo(el,{opacity:0,y:14},{opacity:1,y:0,duration:.48,ease:'power2.out',scrollTrigger:{trigger:el,start:'top 92%',once:true}}));return()=>animations.forEach(animation=>animation.kill())},[]);
+ useHomeScroll();
  const featured=[products[0],products[2],products[6]];
  const featuredImages=['/images/generated/featured-traditional.png','/images/generated/featured-dark-crispy.png','/images/generated/featured-galak.png'];
  return <main className="home-shell"><div className="home-grid"><div className="left-column">

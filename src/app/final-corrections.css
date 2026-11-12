@@ -89,3 +89,5 @@
  .catalog-grid .brigadeiro-card .product-info h3{font-size:1.05rem}
 }
 @media(prefers-reduced-motion:reduce){.review-track{transition:none!important}.hero-photos .hero-piece{animation:none}}
+
+.scroll-motion .hero-piece,.scroll-motion .category-photo img{animation:none}.scroll-letter{display:inline-block}
