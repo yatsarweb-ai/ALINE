@@ -1,0 +1,66 @@
+.home-grid .hero{background:#57302f}
+.hero-piece{border-radius:0;mask-image:none;-webkit-mask-image:none;overflow:visible;filter:drop-shadow(0 18px 14px #23100f55);animation:bonbon-float 7s ease-in-out infinite}
+.hero-piece img{object-fit:contain}
+.piece-one{width:250px;height:245px;left:-42px;top:35px;transform:none}
+.piece-two{width:245px;height:245px;right:-35px;top:25px;transform:none;animation-delay:-1.5s}
+.piece-three{width:230px;height:225px;left:-65px;top:305px;animation-delay:-3s}
+.piece-four{width:225px;height:220px;right:-56px;top:305px;animation-delay:-4.6s}
+.piece-five{width:150px;height:150px;left:205px;top:-18px;animation-delay:-2s}
+.piece-six{width:145px;height:145px;right:205px;top:-16px;animation-delay:-5.3s}
+.piece-seven{width:210px;height:190px;left:0;bottom:32px;animation-delay:-1s}
+.piece-eight{width:180px;height:170px;right:0;bottom:42px;animation-delay:-3.7s}
+.home-grid .hero-copy{max-width:1030px;margin:55px auto 0}
+.home-grid .hero-copy h1{font-size:clamp(4rem,5.4vw,5rem);line-height:.91;letter-spacing:0;margin-bottom:20px}
+.home-grid .hero-copy h1 span{display:block}
+.home-grid .hero-copy h1 .title-final{white-space:nowrap}
+.home-grid .hero-copy h1 em{font-size:1.08em;line-height:1;font-style:normal}
+.home-grid .hero-wave{height:76px;width:100%;background:none;clip-path:none;display:block}
+.home-grid .home-header .header-logo img,.home-grid .newsletter-footer img{background:transparent}
+.category-viewport{flex:1;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;touch-action:auto}
+.category-viewport::-webkit-scrollbar{display:none}
+.category-marquee-track{display:flex;width:max-content}
+.category-group{display:flex;gap:14px;padding-right:14px;flex:none}
+.category-group .category-tile{width:175px;flex:none}
+.home-grid .category-photo{height:152px;border-radius:0;mask-image:none;-webkit-mask-image:none;background:transparent}
+.home-grid .category-photo img{object-fit:contain;animation:category-float 6.5s ease-in-out infinite}
+.category-group .category-tile:nth-child(even) .category-photo img{animation-delay:-3s}
+.home-grid .category-tile span{background:#eeeae2}
+.home-grid .product-feature.brigadeiro-card .product-photo img{padding:10px 42px;filter:drop-shadow(0 10px 8px #22111048)}
+.home-grid .product-feature .product-photo img{image-rendering:auto}
+.all-products-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;margin-top:25px;border:1.5px solid var(--brown);border-radius:100px;padding:11px 20px;color:var(--brown);font-weight:900;font-size:.9rem;transition:background-color .2s,transform .2s}
+.all-products-link:hover{background:var(--mint);transform:translateY(-2px)}
+.home-grid .testimonial-card{flex-direction:row;gap:22px;padding:18px 28px}
+.testimonial-mini{width:100px;height:100px;position:relative;flex:none;border-radius:16px;overflow:hidden;border:2px solid var(--mint)}
+.testimonial-mini img{object-fit:cover}
+.testimonial-content{display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0}
+.home-grid .testimonial-card p{max-width:510px}
+.home-grid .photo-mosaic .mosaic-cell img{object-position:center}
+@keyframes bonbon-float{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes category-float{0%,100%{translate:0 0}50%{translate:0 -3px}}
+@media(max-width:760px){
+ .home-grid .hero{height:590px}
+ .piece-one{width:152px;height:150px;left:-42px;top:72px}
+ .piece-two{width:142px;height:142px;right:-42px;top:63px}
+ .piece-three{width:138px;height:138px;left:-75px;top:335px}
+ .piece-four{width:135px;height:135px;right:-68px;top:328px}
+ .piece-five{width:95px;height:95px;left:95px;top:90px}
+ .piece-six{width:90px;height:90px;right:95px;top:95px}
+ .piece-seven{width:120px;height:112px;left:-10px;bottom:20px}
+ .piece-eight{width:105px;height:100px;right:-12px;bottom:34px}
+ .home-grid .hero-copy{margin:157px auto 0;padding:0 14px}
+ .home-grid .hero-copy h1{font-size:clamp(2.35rem,9.5vw,3.2rem);line-height:.94;margin-bottom:18px}
+ .home-grid .hero-copy h1 .title-final{white-space:normal}
+ .home-grid .hero-copy h1 em{font-size:1.05em}
+ .home-grid .hero-wave{height:55px}
+ .home-grid .category-photo{height:115px}
+ .category-group .category-tile{width:140px}
+ .home-grid .category-carousel .circle-arrow{display:grid}
+ .home-grid .testimonial-card{flex-direction:column;gap:5px;min-height:250px;padding:12px 10px}
+ .testimonial-mini{width:68px;height:68px;border-radius:12px}
+ .home-grid .testimonial-card p{font-size:.81rem}
+ .home-grid .product-feature.brigadeiro-card .product-photo img{padding:10px 35px}
+ .all-products-link{margin-top:19px}
+}
+@media(max-width:390px){.home-grid .hero-copy h1{font-size:2.2rem}}
+@media(max-width:350px){.home-grid .hero-copy h1{font-size:1.95rem}.home-grid .hero-copy{margin-top:175px}}
+@media(prefers-reduced-motion:reduce){.hero-piece,.home-grid .category-photo img{animation:none}}
