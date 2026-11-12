@@ -34,7 +34,7 @@ export function CategoryMarquee(){
   let frame=0;let last=performance.now();
   const advance=(now:number)=>{
    const elapsed=Math.min(50,now-last);last=now;
-   if(!scroller.dataset.scrollDriven&&!reduced.matches&&!paused.current&&now>holdUntil.current&&groupWidth.current){
+   if(!reduced.matches&&!paused.current&&now>holdUntil.current&&groupWidth.current){
     position.current+=elapsed*.018;
     if(position.current>=groupWidth.current*2)position.current-=groupWidth.current;
     if(position.current<groupWidth.current*.5)position.current+=groupWidth.current;

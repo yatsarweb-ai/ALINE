@@ -93,3 +93,5 @@
 .scroll-motion .hero-piece,.scroll-motion .category-photo img{animation:none}.scroll-letter{display:inline-block}
 
 .home-grid .hero-copy h1 span[aria-hidden='true']{display:inline}.home-grid .hero-copy h1 span.scroll-letter{display:inline-block}
+
+.home-grid .category-viewport{-webkit-mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(to right,transparent,#000 28px,#000 calc(100% - 28px),transparent)}
