@@ -9,11 +9,11 @@ import {SiteHeader} from '@/components/SiteHeader';
 import {ProductCard} from '@/components/ProductCard';
 import {QuoteForm} from '@/components/QuoteForm';
 import {CategoryMarquee} from '@/components/CategoryMarquee';
+import {MultimediaGallery} from '@/components/MultimediaGallery';
 import {ReviewCarousel} from '@/components/ReviewCarousel';
 import {products} from '@/lib/products';
 import {business} from '@/lib/config';
 
-const mosaic=['/images/citrus-brigadeiros.jpg','/images/gift-four.jpg','/images/bowling-chocolates.jpg','/images/strawberry-heart.jpg','/images/cake-floral.jpg','/images/gift-pyramid.jpg'];
 export default function Home(){
  const hero=useRef<HTMLElement>(null);
  const [email,setEmail]=useState('');
@@ -26,7 +26,7 @@ export default function Home(){
   <section className="cake-banner"><div className="cake-photo"><Image src="/images/cake-floral.jpg" alt="Torta decorada de ALINE" fill sizes="(max-width:700px) 50vw, 50vw"/></div><div className="cake-panel"><span className="eyebrow">TORTAS GOURMET</span><h2>TORTAS<br/>PARA CELEBRAR</h2><p>Sabores irresistibles y diseños especiales para tus ocasiones más importantes.</p><Link className="pill-button dark" href="/colecciones?categoria=Tortas">Ver tortas <ArrowRight size={18}/></Link></div></section>
   <section className="testimonials home-section"><div className="testimonial-heading"><span className="eyebrow">TESTIMONIOS</span><h2>LO QUE DICEN<br/>NUESTROS CLIENTES</h2></div><ReviewCarousel/></section>
  </div><div className="right-column">
-  <section className="photo-mosaic" aria-label="Galería de creaciones ALINE"><div className="mosaic-grid">{mosaic.map((src,index)=><div className="mosaic-cell" key={src}><Image src={src} alt={`Creación de ALINE ${index+1}`} fill sizes="(max-width:700px) 30vw, 30vw"/></div>)}</div><div className="mosaic-panorama"><Image src="/images/gift-share.jpg" alt="Selección de dulces para compartir" fill sizes="100vw"/></div></section>
+  <MultimediaGallery/>
   <section className="event-quote home-section"><span className="eyebrow">¡TU EVENTO!</span><h2>COTIZÁ<br/>TU CELEBRACIÓN</h2><div className="event-quote-body"><QuoteForm compact/></div></section>
   <section className="ideas home-section"><h2>IDEAS PARA<br/>TU EVENTO</h2><div className="idea-grid">{[['Bodas','/images/gift-roses.jpg'],['Cumpleaños','/images/minnie-brigadeiros.jpg'],['Eventos corporativos','/images/chocolate-tablets.jpg']].map(([title,src])=><Link href={`/personalizados?inspiracion=${encodeURIComponent(title)}`} className="idea-card" key={title}><div><Image src={src} alt={title} fill sizes="(max-width:700px) 30vw, 30vw"/></div><span>{title} <ArrowRight size={17}/></span></Link>)}</div></section>
   <section className="newsletter"><span className="eyebrow">SÉ LA PRIMERA</span><h2>CONOCÉ NUESTRAS<br/>NOVEDADES</h2><p>Recibí lanzamientos, colecciones especiales y novedades de ALINE.</p><form onSubmit={event=>{event.preventDefault();window.location.href=`mailto:${business.email}?subject=${encodeURIComponent('Novedades ALINE')}&body=${encodeURIComponent(`Hola ALINE, quisiera recibir novedades en ${email}.`)}`}}><label className="sr-only" htmlFor="news-email">Tu correo electrónico</label><input id="news-email" type="email" required placeholder="Tu correo electrónico" value={email} onChange={event=>setEmail(event.target.value)}/><button aria-label="Solicitar novedades por correo"><ArrowRight size={20}/></button></form><div className="newsletter-footer"><Image src="/images/aline-logo-white.png" alt="ALINE — Brigadería Gourmet" width={150} height={105}/><span className="footer-divider"/><a href={business.instagram} target="_blank" rel="noreferrer" aria-label="Instagram de ALINE"><Instagram/></a><a href={`mailto:${business.email}`} aria-label="Correo de ALINE">@</a></div></section>

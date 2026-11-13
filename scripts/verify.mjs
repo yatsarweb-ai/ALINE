@@ -16,7 +16,7 @@ const firstCategoryPosition=await page.locator('.category-viewport').evaluate(el
 await page.getByRole('button',{name:'Categorías siguientes'}).click();
 await page.waitForTimeout(180);
 if(await page.locator('.category-viewport').evaluate(element=>element.scrollLeft)===firstCategoryPosition)throw new Error('Navegación de categorías no cambia');
-if(await page.locator('.mosaic-cell').count()!==6)throw new Error('Galería sin selección curada de seis fotos');
+if(await page.locator('.media-piece').count()!==8 || await page.locator('.media-piece video').count()!==3)throw new Error('Incomplete multimedia gallery');
 for(const route of ['/colecciones','/producto/tradicional','/personalizados','/eventos','/nosotros','/carrito']){
  const response=await page.goto(baseUrl+route,{waitUntil:'networkidle'});
  if(response.status()!==200)throw new Error(`${route}: HTTP ${response.status()}`);

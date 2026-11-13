@@ -31,8 +31,10 @@ export function CategoryMarquee(){
   observer.observe(firstGroup);
   measure();
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
-  let frame=0;let last=performance.now();
+  let frame=0;let last=performance.now();let onScreen=false;
+  const active=()=>onScreen&&!document.hidden&&!reduced.matches;
   const advance=(now:number)=>{
+   frame=0;if(!active())return;
    const elapsed=Math.min(50,now-last);last=now;
    if(!reduced.matches&&!paused.current&&now>holdUntil.current&&groupWidth.current){
     position.current+=elapsed*.018;
@@ -44,8 +46,11 @@ export function CategoryMarquee(){
    }
    frame=requestAnimationFrame(advance);
   };
-  frame=requestAnimationFrame(advance);
-  return()=>{cancelAnimationFrame(frame);observer.disconnect()};
+  const sync=()=>{cancelAnimationFrame(frame);frame=0;if(active()){last=performance.now();position.current=scroller.scrollLeft;frame=requestAnimationFrame(advance)}};
+  const visibility=new IntersectionObserver(entries=>{onScreen=entries[0].isIntersecting;sync()});
+  visibility.observe(scroller);
+  document.addEventListener('visibilitychange',sync);reduced.addEventListener('change',sync);
+  return()=>{cancelAnimationFrame(frame);observer.disconnect();visibility.disconnect();document.removeEventListener('visibilitychange',sync);reduced.removeEventListener('change',sync)};
  },[]);
 
  const move=(direction:number)=>{
