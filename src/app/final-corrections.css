@@ -108,3 +108,14 @@
  .media-piece{border-radius:13px}
 }
 @media(max-width:360px){.editorial-grid{grid-template-rows:repeat(9,90px)}}
+
+/* Server-rendered letters are ready before hydration; CSS completes them if JS fails. */
+.home-grid .hero-copy h1 .motion-word,.motion-word{display:inline!important;white-space:nowrap}
+@keyframes title-settle{to{transform:translateY(0) rotate(0);opacity:1}}
+@media(prefers-reduced-motion:no-preference){
+ .home-shell .scroll-letter{transform:translateY(var(--letter-y)) rotate(var(--letter-rotation));opacity:.45;animation:title-settle 1.4s 2s both}
+ .home-shell .hero h1 .scroll-letter{animation-delay:calc(.2s + var(--letter-delay));animation-timing-function:cubic-bezier(.23,1,.32,1)}
+ .scroll-motion h2 .scroll-letter{animation:none}
+}
+/* Touch hover must not shift the CTA while the pinned hero is moving. */
+@media(hover:none){.hero .pill-button:hover{transform:none;box-shadow:none}}
